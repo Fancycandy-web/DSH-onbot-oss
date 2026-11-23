@@ -1,0 +1,70 @@
+{
+  "name": "dsh-onebot",
+  "description": "QQ 小号桥接：私聊与群聊应答（群内需 @、且只在你放行的群里），能真正识图、看视频分镜、读引用里的图；可在你指定的本机目录里读文件；能联网搜索、抓网页、直接打 HTTP 接口（默认只走公网，master 私聊那一轮才放行本机与内网）；33 项 QQ 动作、真 QQ 表情与表情包、群白名单与静默、戳一戳互动、主动搭话、QQ 空间评论与巡检；掉线只提醒并收掉空转进程，不自动重试登录；NapCat 不再跟随 DSH 启动，需要时到插件设置页点按钮启动。QQ 空间、收藏表情、改资料等 NapCat 扩展动作已在 README 和工具描述里标注，换用其他 OneBot v11 实现时核心聊天仍可用。",
+  "version": "1.7.1",
+  "engines": {
+    "dsh": "^0.2.1-rc.2"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js"
+    },
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE",
+    "cordis.patch.yml"
+  ],
+  "license": "MPL-2.0",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-settings-plugins",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ],
+      "platform": "web"
+    }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "plugin",
+    "onebot",
+    "onebot-v11"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.5",
+    "@deepseek-ai/cordis-plugin-loader": "~1.0.6",
+    "@deepseek-ai/dsh-agent": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-agent-default-model": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-attachment": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-credentials": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-llm": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-session": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-session-persistence": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-settings": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-tools": "^0.2.1-rc.2",
+    "@deepseek-ai/dsh-typert-protocol": "^0.2.1-rc.2"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "~3.18.5",
+    "undici": "^7.18.2",
+    "ws": "^8.18.3"
+  }
+}

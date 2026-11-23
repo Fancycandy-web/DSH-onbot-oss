@@ -1,0 +1,15 @@
+# 运行时与本地部署文件：都不进仓库
+node_modules/
+vendor/
+*.log
+*.bak
+*.bak-*
+onebot-runtime.json
+onebot-napcat.json
+onebot-state.json
+onebot-limits.json
+chat-log/
+group-log/
+guest-workspace/
+.DS_Store
+AGENTS.local.md
